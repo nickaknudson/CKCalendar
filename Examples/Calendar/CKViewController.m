@@ -34,13 +34,13 @@
         calendar.onlyShowCurrentMonth = NO;
         calendar.adaptHeightToNumberOfWeeksInMonth = YES;
 
-        calendar.frame = CGRectMake(10, 10, 300, 320);
+        calendar.frame = CGRectMake(10, 80, 300, 320);
         [self.view addSubview:calendar];
 
         self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(calendar.frame) + 4, self.view.bounds.size.width, 24)];
         [self.view addSubview:self.dateLabel];
 
-        self.view.backgroundColor = [UIColor whiteColor];
+        self.view.backgroundColor = [UIColor redColor];
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
     }
@@ -91,9 +91,10 @@
 - (void)calendar:(CKCalendarView *)calendar configureDateItem:(CKDateItem *)dateItem forDate:(NSDate *)date {
     // TODO: play with the coloring if we want to...
     if ([self dateIsDisabled:date]) {
-        dateItem.backgroundColor = [UIColor redColor];
-        dateItem.textColor = [UIColor whiteColor];
+
     }
+    dateItem.backgroundColor = [UIColor blueColor];
+    dateItem.textColor = [UIColor whiteColor];
 }
 
 - (BOOL)calendar:(CKCalendarView *)calendar willSelectDate:(NSDate *)date {
@@ -106,16 +107,16 @@
 
 - (BOOL)calendar:(CKCalendarView *)calendar willChangeToMonth:(NSDate *)date {
     if ([date laterDate:self.minimumDate] == date) {
-        self.calendar.backgroundColor = [UIColor blueColor];
         return YES;
-    } else {
-        self.calendar.backgroundColor = [UIColor redColor];
-        return NO;
     }
+    return YES;
 }
 
 - (void)calendar:(CKCalendarView *)calendar didLayoutInRect:(CGRect)frame {
     NSLog(@"calendar layout: %@", NSStringFromCGRect(frame));
+    //calendar.backgroundColor = [UIColor clearColor];
+    //[calendar setDayOfWeekBottomColor:[UIColor clearColor] topColor:[UIColor clearColor]];
+    //[calendar setInnerBorderColor:[UIColor clearColor]];
 }
 
 @end

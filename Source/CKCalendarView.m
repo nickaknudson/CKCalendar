@@ -152,8 +152,8 @@
     UIView *highlight = [[UIView alloc] initWithFrame:CGRectZero];
     highlight.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
     highlight.layer.cornerRadius = 6.0f;
-    [self addSubview:highlight];
-    self.highlight = highlight;
+    //[self addSubview:highlight];
+    //self.highlight = highlight;
 
     // SET UP THE HEADER
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -197,8 +197,8 @@
         UILabel *dayOfWeekLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         dayOfWeekLabel.textAlignment = NSTextAlignmentCenter;
         dayOfWeekLabel.backgroundColor = [UIColor clearColor];
-        dayOfWeekLabel.shadowColor = [UIColor whiteColor];
-        dayOfWeekLabel.shadowOffset = CGSizeMake(0, 1);
+        //dayOfWeekLabel.shadowColor = [UIColor whiteColor];
+        //dayOfWeekLabel.shadowOffset = CGSizeMake(0, 1);
         [labels addObject:dayOfWeekLabel];
         [self.calendarContainer addSubview:dayOfWeekLabel];
     }
@@ -319,6 +319,7 @@
         }
 
         dateButton.frame = [self _calculateDayCellFrame:date];
+        dateButton.layer.backgroundColor = [UIColor clearColor].CGColor;
 
         [self.calendarContainer addSubview:dateButton];
 
@@ -332,7 +333,7 @@
 }
 
 - (void)_updateDayOfWeekLabels {
-    NSArray *weekdays = [self.dateFormatter shortWeekdaySymbols];
+    NSArray *weekdays = [self.dateFormatter veryShortWeekdaySymbols];
     // adjust array depending on which weekday should be first
     NSUInteger firstWeekdayIndex = [self.calendar firstWeekday] - 1;
     if (firstWeekdayIndex > 0) {
@@ -416,17 +417,19 @@
 }
 
 - (void)_setDefaultStyle {
-    self.backgroundColor = UIColorFromRGB(0x393B40);
+    self.backgroundColor = [UIColor clearColor];
 
     [self setTitleColor:[UIColor whiteColor]];
     [self setTitleFont:[UIFont boldSystemFontOfSize:17.0]];
 
     [self setDayOfWeekFont:[UIFont boldSystemFontOfSize:12.0]];
-    [self setDayOfWeekTextColor:UIColorFromRGB(0x999999)];
-    [self setDayOfWeekBottomColor:UIColorFromRGB(0xCCCFD5) topColor:[UIColor whiteColor]];
+    [self setDayOfWeekTextColor:[UIColor whiteColor]];
+    [self setDayOfWeekBottomColor:[UIColor clearColor] topColor:[UIColor clearColor]];
+
+    [self setInnerBorderColor:[UIColor clearColor]];
 
     [self setDateFont:[UIFont boldSystemFontOfSize:16.0f]];
-    [self setDateBorderColor:UIColorFromRGB(0xDAE1E6)];
+    [self setDateBorderColor:[UIColor clearColor]];
 }
 
 - (CGRect)_calculateDayCellFrame:(NSDate *)date {
