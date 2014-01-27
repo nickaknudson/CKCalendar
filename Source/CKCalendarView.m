@@ -92,8 +92,8 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.backgroundColor = UIColorFromRGB(0xF2F2F2);
-        self.selectedBackgroundColor = UIColorFromRGB(0x88B6DB);
+        self.backgroundColor = [UIColor clearColor];
+        self.selectedBackgroundColor = [UIColor clearColor];
         self.textColor = UIColorFromRGB(0x393B40);
         self.selectedTextColor = UIColorFromRGB(0xF2F2F2);
     }
@@ -300,10 +300,11 @@
         dateButton.date = date;
         CKDateItem *item = [[CKDateItem alloc] init];
         if ([self _dateIsToday:dateButton.date]) {
-            item.textColor = UIColorFromRGB(0xF2F2F2);
-            item.backgroundColor = [UIColor lightGrayColor];
+            item.textColor = [UIColor whiteColor];
+            item.backgroundColor = [UIColor clearColor];
         } else if (!self.onlyShowCurrentMonth && [self _compareByMonth:date toDate:self.monthShowing] != NSOrderedSame) {
-            item.textColor = [UIColor lightGrayColor];
+            item.textColor = [UIColor darkGrayColor];
+            item.backgroundColor = [UIColor clearColor];
         }
 
         if (self.delegate && [self.delegate respondsToSelector:@selector(calendar:configureDateItem:forDate:)]) {
@@ -319,7 +320,7 @@
         }
 
         dateButton.frame = [self _calculateDayCellFrame:date];
-        dateButton.layer.backgroundColor = [UIColor clearColor].CGColor;
+        //dateButton.layer.backgroundColor = [UIColor clearColor].CGColor;
 
         [self.calendarContainer addSubview:dateButton];
 

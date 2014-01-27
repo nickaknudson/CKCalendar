@@ -93,8 +93,8 @@
     if ([self dateIsDisabled:date]) {
 
     }
-    dateItem.backgroundColor = [UIColor blueColor];
-    dateItem.textColor = [UIColor whiteColor];
+    dateItem.selectedBackgroundColor = [UIColor blueColor];
+    dateItem.selectedTextColor = [UIColor greenColor];
 }
 
 - (BOOL)calendar:(CKCalendarView *)calendar willSelectDate:(NSDate *)date {
