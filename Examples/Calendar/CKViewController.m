@@ -95,6 +95,7 @@
     }
     dateItem.selectedBackgroundColor = [UIColor blueColor];
     dateItem.selectedTextColor = [UIColor greenColor];
+    dateItem.image = [UIImage imageNamed:@"left_arrow.png"];
 }
 
 - (BOOL)calendar:(CKCalendarView *)calendar willSelectDate:(NSDate *)date {
