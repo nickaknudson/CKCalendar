@@ -319,9 +319,9 @@
             dateButton.backgroundColor = item.backgroundColor;
         }
 
-        if (item.image != nil) {
-            [dateButton setBackgroundImage:item.image forState:UIControlStateNormal];
-        }
+
+        [dateButton setBackgroundImage:item.image forState:UIControlStateNormal];
+
 
         dateButton.frame = [self _calculateDayCellFrame:date];
         //dateButton.layer.backgroundColor = [UIColor clearColor].CGColor;

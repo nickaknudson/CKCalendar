@@ -26,9 +26,9 @@
         self.minimumDate = [self.dateFormatter dateFromString:@"20/09/2012"];
 
         self.disabledDates = @[
-                [self.dateFormatter dateFromString:@"05/01/2013"],
-                [self.dateFormatter dateFromString:@"06/01/2013"],
-                [self.dateFormatter dateFromString:@"07/01/2013"]
+                [self.dateFormatter dateFromString:@"05/01/2014"],
+                [self.dateFormatter dateFromString:@"06/01/2014"],
+                [self.dateFormatter dateFromString:@"07/01/2014"]
         ];
 
         calendar.onlyShowCurrentMonth = NO;
@@ -92,10 +92,10 @@
     // TODO: play with the coloring if we want to...
     if ([self dateIsDisabled:date]) {
 
+        dateItem.image = [UIImage imageNamed:@"left_arrow.png"];
     }
     dateItem.selectedBackgroundColor = [UIColor blueColor];
     dateItem.selectedTextColor = [UIColor greenColor];
-    dateItem.image = [UIImage imageNamed:@"left_arrow.png"];
 }
 
 - (BOOL)calendar:(CKCalendarView *)calendar willSelectDate:(NSDate *)date {
